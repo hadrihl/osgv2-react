@@ -27,4 +27,38 @@ export default function Form() {
         setPassword(e.target.value);
         setSubmitted(false);
     }
+
+    // handling the form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(name === '' || email === '' || password === '') {
+            setError(true);
+        } else {
+            setSubmitted(true);
+            setError(false);
+        }
+    }
+
+    // handling success message
+    const successMessage = () => {
+        return (
+            <div className="success" style={{
+                display: submitted ? '' : 'none',
+            }}>
+            
+            <h1>User {name} successfully registered!!</h1>
+                
+            </div>
+        );
+    }
+
+    // showing error message if error is true
+    const errorMessage = () => {
+        return (
+            <div className="error" style={{
+                display: error ? '' : 'none',
+            }}>
+            </div>
+        );
+    }
 }
